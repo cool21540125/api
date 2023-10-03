@@ -2,10 +2,11 @@
 
 @url=https://api.openai.com/v1/chat/completions
 @token={{$dotenv SECRET_KEY}}
+@message={{$dotenv MESSAGE}}
 
 
 ### 0~2: 越高越隨機, 越低越精確
-@temperature=0.8
+@temperature=0.5
 
 
 ### 基本對話(需要把 timeout 調高...)
@@ -17,7 +18,7 @@ Content-Type: application/json
     "model": "gpt-3.5-turbo",
     "messages": [{ 
         "role": "user", 
-        "content": "hi" 
+        "content": "{{message}}" 
     }],
     "temperature": {{temperature}}
 }
