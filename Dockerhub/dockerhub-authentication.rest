@@ -1,0 +1,19 @@
+
+@token={{$dotenv token}}
+@namespace={{$dotenv account}}
+@username={{$dotenv username}}
+@password={{$dotenv password}}
+
+
+### List repository tags
+# https://docs.docker.com/docker-hub/api/latest/#tag/repositories/paths/~1v2~1namespaces~1%7Bnamespace%7D~1repositories~1%7Brepository%7D~1tags/get
+GET https://hub.docker.com/v2/namespaces/{{namespace}}/repositories/os7-tools/tags
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+### 

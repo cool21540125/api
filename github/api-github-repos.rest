@@ -1,0 +1,26 @@
+
+@url=https://api.github.com
+@token={{$dotenv token}}
+@account={{$dotenv account}}
+@repo={{$dotenv repo}}
+
+# https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28
+
+
+### List repository activities
+# https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-activities
+GET {{url}}/repos/{{account}}/{{repo}}/activity
+Accept: application/vnd.github+json
+Authorization: bearer {{token}}
+X-GitHub-Api-Version: 2022-11-28
+
+
+### List repositories for the authenticated user
+# https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user
+GET {{url}}/user/repos
+Accept: application/vnd.github+json
+Authorization: bearer {{token}}
+X-GitHub-Api-Version: 2022-11-28
+
+
+### 
