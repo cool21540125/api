@@ -1,0 +1,20 @@
+
+@username={{$dotenv username}}
+@password={{$dotenv password}}
+@code={{$dotenv code}}
+
+
+### OAuth2.0 - Authorization Code Grant
+# https://developer.atlassian.com/cloud/bitbucket/rest/intro/#1--authorization-code-grant--4-1-
+# username 及 password 到這邊去建立 : https://bitbucket.org/cool21540125/workspace/settings/api
+# 透過瀏覽器訪問 https://bitbucket.org/site/oauth2/authorize?client_id={client_id}&response_type=code
+# redirect 到 redirectUrl 可取得 code
+POST https://bitbucket.org/site/oauth2/access_token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic {{username}} {{password}}
+
+grant_type=authorization_code
+&code={{code}}
+
+
+### 

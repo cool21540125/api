@@ -1,0 +1,27 @@
+
+
+@url=https://api.bitbucket.org/2.0
+@workspace={{$dotenv workspace}}
+@token={{$dotenv token}}
+
+
+
+### List repositories in a workspace
+# https://developer.atlassian.com/cloud/bitbucket/rest/api-group-repositories/#api-repositories-workspace-get
+GET {{url}}/repositories/{{workspace}}
+Authorization: Bearer {{token}}
+Accept: application/json
+
+
+###
+@repo_slug=
+
+
+### Get a repository
+# https://developer.atlassian.com/cloud/bitbucket/rest/api-group-repositories/#api-repositories-workspace-repo-slug-get
+GET {{url}}/repositories/{{workspace}}/{{repo_slug}}
+Authorization: Bearer {{token}}
+Accept: application/json
+
+
+### 
