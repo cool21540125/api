@@ -1,0 +1,42 @@
+@api_v1=https://api.appstoreconnect.apple.com/v1
+@TOKEN={{$dotenv SIGNED_TOKEN}}
+@APP_ID={{$dotenv APP_ID}}
+
+
+### List Apps
+GET {{api_v1}}/apps
+Authorization: Bearer {{TOKEN}}
+
+
+### Read App Information
+# https://developer.apple.com/documentation/appstoreconnectapi/read_app_information
+GET {{api_v1}}/apps/{{APP_ID}}
+Authorization: Bearer {{TOKEN}}
+
+
+### List All Builds of an App
+# https://developer.apple.com/documentation/appstoreconnectapi/list_all_builds_of_an_app
+GET {{api_v1}}/apps/{{APP_ID}}/builds
+Authorization: Bearer {{TOKEN}}
+
+
+### List All Prerelease Versions for an App
+# 沒有換頁這功能, 只能逐頁取得 cursor 再到下一頁
+# https://developer.apple.com/documentation/appstoreconnectapi/list_all_prerelease_versions_for_an_app
+GET {{api_v1}}/apps/{{APP_ID}}/preReleaseVersions?cursor=Mg.ctQIVw
+Authorization: Bearer {{TOKEN}}
+
+
+### List All App Store Versions for an App
+# https://developer.apple.com/documentation/appstoreconnectapi/list_all_app_store_versions_for_an_app
+GET {{api_v1}}/apps/{{APP_ID}}/appStoreVersions
+Authorization: Bearer {{TOKEN}}
+
+
+### 自幹方式...
+# https://stackoverflow.com/questions/56362852/app-store-connect-api-last-uploaded-build-version-and-number
+GET https://api.appstoreconnect.apple.com/v1/builds?filter[app]={{APP_ID}}&sort=-version&fields[builds]=version&filter[preReleaseVersion.version]=2.17.4&limit=10
+Authorization: Bearer {{TOKEN}}
+
+
+### 

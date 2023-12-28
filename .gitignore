@@ -1,1 +1,6 @@
 .env
+secret*
+AuthKey_*.p8
+.venv
+venv
+*.pyc
