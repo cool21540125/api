@@ -8,7 +8,7 @@
 
 
 ### Get active metrics list
-@from=1669852800
+@from={{$timestamp -8 h}}
 # https://docs.datadoghq.com/api/latest/metrics/?code-lang=curl#get-active-metrics-list
 GET {{url}}/api/v1/metrics?from={{from}}
 DD-API-KEY: {{DD_API_KEY}}
