@@ -30,7 +30,7 @@ Content-Type: application/json
 Authorization: Bearer {{CHANNEL_ACCESS_TOKEN}}
 
 {
-    "to": ["{{RECV_CHANNEL_ID1}}"],
+    "to": ["{{RECV_CHANNEL_ID}}"],
     "messages":[
         {
             "type":"text",
@@ -97,7 +97,7 @@ Content-Type: application/json
 Authorization: Bearer {{CHANNEL_ACCESS_TOKEN}}
 
 {
-    "to": "{{RECV_CHANNEL_ID1}}",
+    "to": "{{RECV_CHANNEL_ID}}",
     "messages": [
         {
             "type": "text",
