@@ -1,0 +1,17 @@
+### ElasticSearch API
+@endpoint=http://127.0.0.1:9200
+
+# ----------------------- 基本 CRUD -----------------------
+###
+GET {{endpoint}}/
+
+### cluster health
+GET {{endpoint}}/_cat
+
+### 檢查詳細狀況
+GET {{endpoint}}/_cat/health?v
+Accept: application/json
+
+### 檢查 Index
+GET {{endpoint}}/_cat/indices?v
+Accept: application/json

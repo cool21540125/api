@@ -1,0 +1,79 @@
+@endpoint=http://127.0.0.1:9200
+
+### 建立 Index
+PUT {{endpoint}}/abc?pretty
+
+### 查 Index 資料
+GET {{endpoint}}/movies/
+
+### 刪除 Index
+DELETE {{endpoint}}/metr*
+
+### 修改 or 新增 (upsert)
+PUT {{endpoint}}/customer/_doc/12345
+Content-Type: application/json
+
+{
+    "name": "John Doe2"
+}
+
+### 查詢單一筆
+GET {{endpoint}}/customer/_doc/12345
+
+### 刪除特定
+DELETE {{endpoint}}/customer/_doc/12345
+
+###
+GET {{endpoint}}/movies/_search?q=Dark
+
+
+
+### 更新
+POST {{endpoint}}/customer/_doc/1/_update?pretty
+Content-Type: application/json
+
+{
+    "doc": {
+        "name": "Tony",
+        "age": 31
+    }
+}
+
+### 支援 script
+POST {{endpoint}}/customer/_doc/1/_update?pretty
+Content-Type: application/json
+
+{
+    "script": "ctx._source.age+=1"
+}
+
+### 新增
+POST {{endpoint}}/customer/_doc/?pretty
+Content-Type: application/json
+
+{
+    "name": "Jane Doe"
+}
+
+
+
+
+
+###
+GET {{endpoint}}/lorem/_doc/0
+
+
+###
+GET {{endpoint}}/logstash-2019.01.27/
+
+
+###
+GET {{endpoint}}/_count?pretty
+Content-Type: application/json
+
+{
+    "query": {
+        "match_all": {}
+    }
+}
+
