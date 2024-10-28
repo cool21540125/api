@@ -1,0 +1,9 @@
+
+@url=https://opendata.cwa.gov.tw/
+@token={{$dotenv TOKEN}}
+
+### 預報
+GET {{url}}/api/v1/rest/datastore/F-C0032-001?Authorization={{token}}
+
+
+### 
