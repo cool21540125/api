@@ -49,5 +49,40 @@ Authorization: Bearer {{token}}
 Content-type: application/json
 
 
+### 發送簡單訊息
+@SlackWorkspace={{$dotenv SlackWorkspace}}
+@WebhookAppID={{$dotenv WebhookAppID}}
+@WebhookToken={{$dotenv WebhookToken}}
+POST https://hooks.slack.com/services/{{SlackWorkspace}}/{{WebhookAppID}}/{{WebhookToken}}
+Content-Type: application/json
 
-### 
+{
+  "text": "123"
+}
+
+
+### 發送訊息
+POST https://hooks.slack.com/services/{{SlackWorkspace}}/{{WebhookAppID}}/{{WebhookToken}}
+Content-Type: application/json
+
+{
+	"blocks": [
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "This is a header block",
+				"emoji": true
+			}
+		},
+		{
+			"type": "context",
+			"elements": [
+				{
+					"type": "mrkdwn",
+					"text": "*Cat* has `approved` this message."
+				}
+			]
+		}
+	]
+}
