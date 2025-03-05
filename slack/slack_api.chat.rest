@@ -1,0 +1,83 @@
+# https://api.slack.com/methods
+@url=https://slack.com/api
+@ChannelID={{$dotenv ChannelID}}
+@BotToken={{$dotenv BotToken}}
+@WebhookURL={{$dotenv WebhookURL}}
+# -------------------------------------
+
+
+### ======================== 發送 Schedule Message ========================
+# https://api.slack.com/methods/chat.scheduleMessage
+@preparePostTS={{$timestamp 11 s}}
+POST https://slack.com/api/chat.scheduleMessage
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{ChannelID}}",
+    "text": "{{$localDatetime 'MM/DD HH:mm:ss'}} @@@@ 排程訊息 @@@@\n預計 ts={{preparePostTS}} User 才會接收到",
+    "post_at": {{preparePostTS}}
+}
+// NOTE: post_at 如果在 10 秒內很容易出現 time_in_past (原因不明), 但偶爾能成功
+
+
+### ======================== 討論串案例 ========================
+### 1. 發送 Message
+# https://api.slack.com/methods/chat.postMessage
+# @name InThreadChat
+POST https://slack.com/api/chat.postMessage
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{ChannelID}}",
+    "text": "這個議題就在這邊討論吧~ 你這愚蠢的小傢伙"
+}
+
+### 
+@thread_ts={{InThreadChat.response.body.ts}}
+
+
+### 2. 回覆 Message 到 Thread
+# https://api.slack.com/methods/chat.postMessage
+POST https://slack.com/api/chat.postMessage
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{ChannelID}}",
+    "text": "在討論串裡頭討論很棒, 不會吵到大家",
+    "thread_ts": "{{thread_ts}}"
+}
+
+
+### ======================== Rich-Text Message ========================
+POST https://slack.com/api/chat.postMessage
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{ChannelID}}",
+	"blocks": [
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "This is a header block",
+				"emoji": true
+			}
+		},
+		{
+			"type": "context",
+			"elements": [
+				{
+					"type": "mrkdwn",
+					"text": "{{$localDatetime 'MM/DD HH:mm:ss'}} *Tony* has `posted` this message."
+				}
+			]
+		}
+	]
+}
+
+
+### ======================== ... ========================

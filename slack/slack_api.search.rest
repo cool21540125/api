@@ -1,0 +1,11 @@
+
+@UserToken={{$dotenv UserToken}}
+
+
+### 讓 Slack 搜尋聊天記錄 (Message 需要做 UrlEncode)
+# https://api.slack.com/methods/search.messages
+GET https://slack.com/api/search.messages?query=%E6%84%9A%E8%A0%A2
+Authorization: Bearer {{UserToken}}
+
+
+### 

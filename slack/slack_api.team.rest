@@ -1,0 +1,16 @@
+@BotToken={{$dotenv BotToken}}
+
+
+### (不曉得用途, but it works)
+# https://api.slack.com/methods/team.preferences.list
+GET https://slack.com/api/team.preferences.list
+Authorization: Bearer {{BotToken}}
+
+
+### (不曉得用途, but it works)
+# https://api.slack.com/methods/team.info
+GET https://slack.com/api/team.info
+Authorization: Bearer {{BotToken}}
+
+
+### 

@@ -1,0 +1,55 @@
+@url=https://slack.com/api
+@channel={{$dotenv ChannelID}}
+@BotToken={{$dotenv BotToken}}
+@WebhookURL={{$dotenv WebhookURL}}
+
+
+### 列出 all channel list
+# https://api.slack.com/methods/conversations.list
+POST https://slack.com/api/conversations.list
+Authorization: Bearer {{BotToken}}
+
+
+### Bot 加入到 existed Channel
+# https://api.slack.com/methods/conversations.join
+POST https://slack.com/api/conversations.join
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{channel}}"
+}
+
+
+### Bot 退出 joinned Channel
+# https://api.slack.com/methods/conversations.leave
+POST https://slack.com/api/conversations.leave
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{channel}}"
+}
+
+
+### Bot 建立 SlackChannel (user 需要自己去找才看得到)
+# https://api.slack.com/methods/conversations.create
+# 所需權限: channels:write,groups:write,mpim:write,im:write
+POST https://slack.com/api/conversations.create
+Authorization: Bearer {{BotToken}}
+Content-Type: application/json;charset=utf-8
+
+{
+    "name": "new2025channel"
+}
+
+
+### Bot 移除 SlackChannel NOTE: Enterprise ONLY
+# https://api.slack.com/methods/admin.conversations.delete
+POST https://slack.com/api/admin.conversations.delete
+Authorization: Bearer {{BotToken}}
+Content-Type: application/json;charset=utf-8
+
+{
+    "channel_id": "legacy2024channel"
+}

@@ -1,0 +1,27 @@
+@ChannelID={{$dotenv ChannelID}}
+@BotToken={{$dotenv BotToken}}
+@WebhookURL={{$dotenv WebhookURL}}
+
+### ======================== 比較 Webhook 及 postMessage ========================
+### 發送 Message 到指定的 Channel (需要先 join) (訊息發了之後可以做 modify/delete)
+# https://api.slack.com/methods/chat.postMessage
+POST https://slack.com/api/chat.postMessage
+Authorization: Bearer {{BotToken}}
+Content-type: application/json;charset=utf-8
+
+{
+    "channel": "{{ChannelID}}",
+    "text": "App 作為一個 User (我需要在 Channel) -- send Message"
+}
+
+
+### 藉由 Webhook 直接發送 Message 到對應的 Channel (訊息發了就發了, 無法再做 modify/delete)
+POST {{WebhookURL}}
+Content-type: application/json;charset=utf-8
+
+{
+    "text": "App 直接使用 WebhookURL -- send Message"
+}
+
+
+### ======================== ... ========================
