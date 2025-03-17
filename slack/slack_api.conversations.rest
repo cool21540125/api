@@ -1,7 +1,6 @@
 @url=https://slack.com/api
 @channel={{$dotenv ChannelID}}
 @BotToken={{$dotenv BotToken}}
-@WebhookURL={{$dotenv WebhookURL}}
 
 
 ### 列出 all channel list

@@ -2,7 +2,6 @@
 @url=https://slack.com/api
 @ChannelID={{$dotenv ChannelID}}
 @BotToken={{$dotenv BotToken}}
-@WebhookURL={{$dotenv WebhookURL}}
 # -------------------------------------
 
 
