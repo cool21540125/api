@@ -1,0 +1,9 @@
+
+@url=http://localhost:9090
+
+### 
+GET {{url}}/api/v1/targets?state=active
+
+
+### 
+GET {{url}}/api/v1/status/config
