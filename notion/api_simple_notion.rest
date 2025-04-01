@@ -1,0 +1,15 @@
+
+@NOTION_API=https://api.notion.com
+@DatabaseID=2134e2e11cf74c6eb07d2f5c21fd1996
+@token={{$dotenv NOTION_ACCESS_TOKEN}}
+
+
+### Authentication
+GET {{NOTION_API}}/v1/users
+Authorization: Bearer {{token}}
+Notion-Version: 2022-06-28
+
+
+###
+POST {{NOTION_API}}/v1/databases/{{DatabaseID}}/query?
+Authorization: Bearer {{token}}
