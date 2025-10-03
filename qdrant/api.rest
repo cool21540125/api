@@ -1,0 +1,34 @@
+
+@api_key={{$dotenv QDRANT_API_KEY }}
+@url={{$dotenv QDRANT_ENDPOINT}}
+
+
+### 僅作測試是否能夠正常連線, 正常應該看到 200
+GET {{url}}
+api-key: {{api_key}}
+
+
+### Create a collection - 維度 768 & 文字語意 embedding 幾乎都用 Cosine similarity
+# 可適用於 Google Gemini (PaLM) 的 models/text-embedding-004
+PUT {{url}}/collections/n8n-poc
+api-key: {{api_key}}
+
+{
+    "vectors": {
+        "size": 768,
+        "distance": "Cosine"
+    }
+}
+
+
+### 
+POST {{url}}/collections/n8n-poc/points/scroll
+api-key: {{api_key}}
+
+
+### WARNING: 慎用!! 移除 collection 
+# DELETE {{url}}/collections/test_collection
+# api-key: {{api_key}}
+
+
+###
