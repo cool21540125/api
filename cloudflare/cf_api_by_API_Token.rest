@@ -31,3 +31,29 @@ GET {{api}}/zones/{{zone_id}}/dns_records
     &order=type
     &direction=desc
 Authorization: Bearer {{token}}
+
+
+###
+GET https://api.cloudflare.com/client/v4/zones/{{zone_id}}/dns_records
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+###
+@record_id=5be89e30ce97613b9acf93825faceeb9
+
+
+### 改 proxy
+PUT {{api}}/zones/{{zone_id}}/dns_records/{{record_id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "type": "CNAME",
+    "name": "www.weibyapps.com",
+    "content": "weibyofficialwebsite-1818581912.us-west-2.elb.amazonaws.com",
+    "ttl": 1,
+    "proxied": false
+}
+
+###
