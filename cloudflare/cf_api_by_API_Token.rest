@@ -20,7 +20,24 @@ Authorization: Bearer {{token}}
 
 
 ### Zone ID
-@zone_id = {{list_zones.response.body.result[0].id}}
+@zone_id = {{list_zones.response.body.result[5].id}}
+
+
+### 查詢 Zone 是否有啟用 IPv6 Compatibility (預設啟用)
+# 
+GET {{api}}/zones/{{zone_id}}/settings/ipv6
+Authorization: Bearer {{token}}
+
+
+### 修改 Zone - 關閉 IPv6 Compatibility (需等待 10~60 mins)
+# (頁面僅能 on, 如果要 off 需使用 API)
+PATCH {{api}}/zones/{{zone_id}}/settings/ipv6
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "value": "off"
+}
 
 
 # https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records
