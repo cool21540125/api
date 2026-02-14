@@ -1,0 +1,17 @@
+
+@HOST={{$dotenv HOST}}
+@DATABASE=neo4j
+@B64TOKEN={{$dotenv B64TOKEN}}
+
+### 
+POST https://{{HOST}}/db/{{DATABASE}}/query/v2
+Authorization: Basic {{B64TOKEN}}
+Content-Type: application/json
+
+{
+  "statement": "MATCH (n:SRE) RETURN n LIMIT 1",
+  "parameters": {}
+}
+
+
+### 
